@@ -19,15 +19,15 @@ Route::get('/', function () {
 
 Route::get('/infos/contact/sav', function () {
     return view('/pages/sav');
-});
+})->name("sav");
 
 Route::get('/infos/contact/partenariat', function () {
     return view('/pages/partenariat');
-});
+})->name("partenariat");
 
 Route::get('/infos/contact/info', function () {
     return view('/pages/info');
-});
+})->name("info");
 
 Route::get('/team/web/dev/front', function () {
     $front = [
@@ -53,10 +53,10 @@ Route::get('/team/web/dev/front', function () {
         ],
     ];
     return view('/pages/frontend',compact('front'));
-});
+})->name("front");
 
 Route::get('/team/web/dev/back', function () {
-    return view('/pages/backend');
-});
+    return view('pages.backend');
+})->name("back");
 
 
