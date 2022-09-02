@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BackController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\SavController;
+use App\Http\Controllers\PartenariatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,50 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,"index"]);
 
-Route::get('/infos/contact/sav', function () {
-    return view('/pages/sav');
-})->name("sav");
+Route::get('/infos/contact/sav',[SavController::class,"index"])->name("sav");
 
-Route::get('/infos/contact/partenariat', function () {
-    return view('/pages/partenariat');
-})->name("partenariat");
+Route::get('/infos/contact/partenariat', [PartenariatController::class,"index"])->name("partenariat");
 
-Route::get('/infos/contact/info', function () {
-    return view('/pages/info');
-})->name("info");
+Route::get('/infos/contact/info', [InfoController::class,"index"])->name("info");
 
-Route::get('/team/web/dev/front', function () {
-    $front = [
-        [
-            "nom" => "alix",
-            "fonction" => "frontend dev",
-            "url" => "http://placekitten.com/g/200/300"
-        ],
-        [
-            "nom" => "Johan",
-            "fonction" => "Fullstack dev + bg",
-            "url" => "http://placekitten.com/g/200/300"
-        ],
-        [
-            "nom" => "Cactus",
-            "fonction" => "Coach inchallah",
-            "url" => "http://placekitten.com/g/200/300"
-        ],
-        [
-            "nom" => "Nico",
-            "fonction" => "?",
-            "url" => "http://placekitten.com/g/200/300"
-        ],
-    ];
-    return view('/pages/frontend',compact('front'));
-})->name("front");
+Route::get('/team/web/dev/front',[FrontController::class,"index"])->name("front");
 
-Route::get('/team/web/dev/back', function () {
-    return view('pages.backend');
-})->name("back");
+Route::get('/team/web/dev/back', [BackController::class,"index"])->name("back");
 
 
